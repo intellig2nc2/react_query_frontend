@@ -3,11 +3,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
+import { MdExpandMore, MdExpandLess } from 'react-icons/md'
 
 const SiderBar = () => {
 
     const [open, setOpen] = useState(false)
-
+    const [salesOpen, setSalesOpen] = useState(false)
     const location = useLocation()
 
   return (
@@ -56,6 +57,37 @@ const SiderBar = () => {
                 >
                     고용인 정보
                 </MenuItem>
+                <MenuWrapper>
+                    <MenuItemButton
+                        $active={salesOpen}
+                        as="div"
+                        onClick={() => setSalesOpen(prev => !prev)}
+                    >
+                        <span>판매 관리 ▼</span>
+                        {salesOpen ? <MdExpandLess/> : <MdExpandMore/>}
+                    </MenuItemButton>
+                </MenuWrapper>
+                {salesOpen && (
+                    <SubMenu>
+                        <SubMenuItem
+                            to="/product"
+                            $active={location.pathname === "/product"}
+                            onClick={() => setOpen(false)}
+                        >
+                            상품 정보
+                        </SubMenuItem>
+                        <SubMenuItem
+                            to="/sales"
+                            $active={location.pathname === "/sales"}
+                            onClick={() => setOpen(false)}
+                        >
+                            판매 정보
+                        </SubMenuItem>
+
+                    </SubMenu>
+                    
+                )}
+                
 
             </Menu>
 
@@ -66,6 +98,65 @@ const SiderBar = () => {
 }
 
 export default SiderBar
+
+const MenuWrapper = styled.div`
+    width: 100%;
+`
+
+const MenuItemButton = styled.button`
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 18px;
+    font-size: 15px;
+    font-weight: 600;
+
+    color: ${({ $active }) =>
+        $active ? "white" : "#cbd5e1"};
+
+    background: ${({ $active }) =>
+        $active ? "#3b82f6" : "transparent"};
+
+
+
+    reansition: all 025s ease;
+    &:hover {
+        background: ${({$active}) =>
+            $active ? "#0958d9" : "#fff"
+        }
+    }
+    svg{
+        font-size: 22px;
+        transition: transform 0.25s ease;
+    }
+`
+const SubMenu = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-top: 6px;
+`
+const SubMenuItem = styled(Link)`
+    padding: 12px; 16px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 6px;
+    color: ${({$active}) =>
+        $active ? "#1677ff" : "#555"};
+    background: ${({$active}) =>
+        $active ? "#e6f4ff" : "transparent"};
+    transition: all 0.25s ease;
+
+    &:hover{
+        background: #f5f5f5;
+    }
+`;
 
 
 const MobileTopBar = styled.div`

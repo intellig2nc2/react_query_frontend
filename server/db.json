@@ -106,11 +106,18 @@
       "name": "장경석",
       "email": "choijw6566@gmail.com",
       "job": "교수1",
-      "pay": "1234",
+      "pay": "123141",
       "id": "bhLJfIsDXW0"
+    },
+    {
+      "name": "김연준",
+      "email": "aweicf@foijcwe",
+      "job": "학생",
+      "pay": "123",
+      "id": "n6Os1DcJnDk"
     }
   ],
-  "products": [
+  "product": [
     {
       "id": "5",
       "product_name": "스마트폰 거치대 5",
@@ -134,18 +141,34 @@
       "cost_price": 17246,
       "sale_price": 25732,
       "category_code": "E2"
+    },
+    {
+      "product_name": "겔럭시 s54",
+      "color": "Black",
+      "cost_price": 1231647,
+      "sale_price": 2353464784567845,
+      "category_code": "E1",
+      "id": "yDclQRO__ZY"
+    },
+    {
+      "product_name": "노트북",
+      "color": "Blue",
+      "cost_price": 1215,
+      "sale_price": 247568967976,
+      "category_code": "E2",
+      "id": "v5N82r6Guo8"
     }
   ],
   "todos": [
     {
-      "subject": "2",
-      "checked": false,
-      "id": "LeR3E19CjxU"
+      "subject": "kdt 예습",
+      "checked": true,
+      "id": "gQGXErnUboY"
     },
     {
-      "subject": "12123123",
-      "checked": false,
-      "id": "n3TDBhqnSrA"
+      "subject": "매매일지",
+      "checked": true,
+      "id": "_Sh4og9bMAY"
     }
   ],
   "sales": [
