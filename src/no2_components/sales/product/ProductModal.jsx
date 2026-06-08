@@ -34,7 +34,7 @@ const ProductModal = ({open, setOpen, initialValues, onSubmit}) => {
         <Form
             form={form}
             layout='vertical'
-            onFinish={onFinish}
+            onFinish={onFinish} // onSubmit event
             size='large'
         >
             <Form.Item

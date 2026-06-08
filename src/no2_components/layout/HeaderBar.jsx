@@ -1,10 +1,12 @@
 // HeaderBar.jsx
 
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 import { getCurrentUser, logout } from '../../no3_store/hooks/useUser'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import LoginFormModal from '../user/LoginFormModal'
+import RegisterFormModal from '../user/RegisterFormModal'
 
 const HeaderBar = () => {
 
@@ -13,10 +15,11 @@ const HeaderBar = () => {
     queryFn: getCurrentUser,
     initialData: getCurrentUser
    })
-
   const navigate = useNavigate();
   const queryClient = useQueryClient()
 
+  const[loginOpen, setLoginOpen] = useState(false);
+  const[registerOpen, setRegisterOpen] = useState(false);
   const handleLogout = () => {
       logout();
       queryClient.setQueryData(["user"], null)
@@ -25,46 +28,55 @@ const HeaderBar = () => {
   }
 
   return (
-    <Container>
+    <>
+      <Container>
 
-      <Logo onClick={() => navigate("/")}>
-        Logo
-      </Logo>
+        <Logo onClick={() => navigate("/")}>
+          IWTGH
+        </Logo>
 
-      <Menu>
+        <Menu>
 
-        {user ?
+          {user ?
 
-          <UserSection>
+            <UserSection>
 
-            <UserName>
-              👋 {user.username} 님 
-            </UserName>
+              <UserName>
+                👋 {user.username} 님 
+              </UserName>
 
-            <LogoutButton onClick={handleLogout}>
-              로그아웃
-            </LogoutButton>
+              <LogoutButton onClick={handleLogout}>
+                로그아웃
+              </LogoutButton>
 
-          </UserSection>
+            </UserSection>
 
-          :
+            :
 
-          <ButtonGroup>
+            <ButtonGroup>
 
-            <LoginButton onClick={() => navigate("/login")}>
-              로그인
-            </LoginButton>
+              <LoginButton onClick={() => setLoginOpen(true)}>
+                로그인
+              </LoginButton>
+              <RegisterButton onClick={() => setRegisterOpen(true)}>
+                회원가입
+              </RegisterButton>
+            </ButtonGroup>
+          }
 
-            <RegisterButton onClick={() => navigate("/register")}>
-              회원가입
-            </RegisterButton>
+        </Menu>
 
-          </ButtonGroup>
-        }
-
-      </Menu>
-
-    </Container>
+      </Container>
+    <LoginFormModal
+      open={loginOpen}
+      setOpen={setLoginOpen}
+    />
+    <RegisterFormModal
+      open={registerOpen}
+      setOpen={setRegisterOpen}
+    />
+    </>
+    
   )
 }
 
