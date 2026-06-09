@@ -8,7 +8,7 @@ import {
     productDeleteApi
 }from "../../apis/sales/product.api"
 
-export const useAllProduct = () => {
+export const useAllGetProduct = () => {
     return useQuery({
         queryKey: ["product"],
         queryFn: productAllGetApi

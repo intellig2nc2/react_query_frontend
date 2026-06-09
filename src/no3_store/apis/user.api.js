@@ -12,7 +12,7 @@ export const userAllGetApi = async () =>{
 export const userLoginApi = async (userObj) => {
     try {
         const response = await axios.get(
-            `http://localhost:3001/user?username=${userObj.username}`
+            `http://localhost:3001/user?name=${userObj.username}`
         )
 
         const users = response.data
@@ -51,7 +51,7 @@ export const userRegisterApi = async (userObj) => {
 
 export const userPostApi = async (dataObj) =>{
     try{
-        const response = await axios.get(`http://localhost:3001/user?username=${userObj.username}`)
+        const response = await axios.get(`http://localhost:3001/user?name=${userObj.username}`)
         const users = response.data
         if(users.length>0){
             return alert("이미 존재하는 사용자입니다.")

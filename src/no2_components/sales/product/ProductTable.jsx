@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from 'react'
 import {
-  useAllProduct,
+  useAllGetProduct,
   useDeleteProduct,
   useRegisterProduct,
   useUpdateProduct
@@ -13,7 +13,7 @@ const ProductTable = () => {
   const [open, setOpen] = useState(false)
   const [newProduct, setNewProduct] = useState(null)
 
-  const { data: productList = [], isLoading, error } = useAllProduct()
+  const { data: productList = [], isLoading, error } = useAllGetProduct()
 
   const registerMutation = useRegisterProduct()
   const updateMutation = useUpdateProduct()

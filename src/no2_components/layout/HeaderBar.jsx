@@ -42,7 +42,7 @@ const HeaderBar = () => {
             <UserSection>
 
               <UserName>
-                👋 {user.username} 님 
+                👋 {user.name} 님   
               </UserName>
 
               <LogoutButton onClick={handleLogout}>
